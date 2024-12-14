@@ -1,0 +1,36 @@
+server:
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3308/microservices?createDatabaseIfNotExist=true
+    username: root
+    password: yhdr
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+  application:
+    name: employee-service
+
+  spring:
+    cloud:
+      config:
+        import-check:
+          enabled: false
